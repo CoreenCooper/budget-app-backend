@@ -6,9 +6,12 @@ transactions.get("/", (req, res) => {
   res.json(transactionsArray);
 });
 
-// create a single transaction
+// create and display a single transaction
 transactions.post("/", (req, res) => {
-  res.json(transactionsArray);
+  const { body } = req;
+  transactionsArray.push(body);
+  const newTrans = transactionsArray.length - 1;
+  res.json(transactionsArray[newTrans]);
 });
 
 // show a single transaction
@@ -34,6 +37,9 @@ transactions.put("/:idx", (req, res) => {
     res.direct("/*");
   }
 });
+
+// should there be sometype of validation
+// if the user enters an idx that is not available?
 
 // delete a single transaction
 transactions.delete("/:idx", (req, res) => {
