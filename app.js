@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require('cors');
-const transactionsController = require("./controllers/transactionsController");
+const transactionsController = require("./controllers/transactionsController.js");
 
 const app = express();
 app.use(express.json());
@@ -20,10 +20,6 @@ app.get("/", (req, res) => {
   res.send(`<h1>Coreen's in the house.<br>
   I said Coreen's in the house.</h1>`);
 });
-
-app.get("/transactions", (req, res) => {
-  res.json(transactionsArray);
-})
 
 // 
 app.get("/*", (req, res) => {
