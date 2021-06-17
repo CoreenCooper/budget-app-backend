@@ -1,4 +1,4 @@
-const transactions = require("expres").Router();
+const transactions = require("express").Router();
 const transactionsArray = require("../models/transactions");
 
 // index - list all transactions
@@ -12,23 +12,23 @@ transactions.post("/", (req, res) => {
 });
 
 // show a single transaction
-transactions.get("/id", (req, res) => {
-  const { id } = req.params;
-  if (transactionsArray[id]) {
-    console.log(transactionsArray[id]);
-    res.json(logsArray[id]);
+transactions.get("/:idx", (req, res) => {
+  const { idx } = req.params;
+  if (transactionsArray[idx]) {
+    console.log(transactionsArray[idx]);
+    res.json(transactionsArray[idx]);
   } else {
     res.redirect("/*");
   }
 });
 
 // update a single transaction
-transactions.put("/:id", (req, res) => {
-  const { id } = req.params;
+transactions.put("/:idx", (req, res) => {
+  const { idx } = req.params;
   const { body } = req;
-  if (transactions[id]) {
-    transactions[id] = body;
-    res.json(logsArray[id]);
+  if (transactions[idx]) {
+    transactions[idx] = body;
+    res.json(transactionsArray[idx]);
     console.log(body);
   } else {
     res.direct("/*");
@@ -36,10 +36,10 @@ transactions.put("/:id", (req, res) => {
 });
 
 // delete a single transaction
-transactions.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  const deletedTransactions = transactionsArray.splice(id, 1);
+transactions.delete("/:idx", (req, res) => {
+  const { idx } = req.params;
+  const deletedTransactions = transactionsArray.splice(idx, 1);
   res.json(deletedTransactions[0]);
 });
 
-module.exports = logs;
+module.exports = transactions;
