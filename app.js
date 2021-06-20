@@ -8,17 +8,9 @@ app.use(cors());
 
 app.use("/transactions", transactionsController);
 
-
-
-// app.use((req, res, next) => {
-//   console.log("Use as debugger");
-//   next();
-// })
-
 // ROOT
 app.get("/", (req, res) => {
-  res.send(`<h1>Coreen's in the house.<br>
-  I said Coreen's in the house.</h1>`);
+  res.send(`<h1>Budget API</h1>`);
 });
 
 // 
