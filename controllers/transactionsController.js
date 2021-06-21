@@ -15,33 +15,32 @@ transactions.post("/", (req, res) => {
 });
 
 // show a single transaction
-transactions.get("/:idx", (req, res) => {
-  const { idx } = req.params;
-  if (transactionsArray[idx]) {
-    console.log(transactionsArray[idx]);
-    res.json(transactionsArray[idx]);
+transactions.get("/:index", (req, res) => {
+  const { index } = req.params;
+  console.log(index);
+  if (transactionsArray[index]) {
+    res.json(transactionsArray[index]);
   } else {
     res.redirect("/*");
   }
 });
 
 // update a single transaction
-transactions.put("/:idx", (req, res) => {
-  const { idx } = req.params;
+transactions.put("/:index", (req, res) => {
+  const { index } = req.params;
   const { body } = req;
-  if (transactions[idx]) {
-    transactions[idx] = body;
-    res.json(transactionsArray[idx]);
-    console.log(body);
+  if (transactions[index]) {
+    transactions[index] = body;
+    res.json(transactionsArray[index]);
   } else {
     res.direct("/*");
   }
 });
 
 // delete a single transaction
-transactions.delete("/:idx", (req, res) => {
-  const { idx } = req.params;
-  const deletedTransactions = transactionsArray.splice(idx, 1);
+transactions.delete("/:index", (req, res) => {
+  const { index } = req.params;
+  const deletedTransactions = transactionsArray.splice(index, 1);
   res.json(deletedTransactions[0]);
 });
 
