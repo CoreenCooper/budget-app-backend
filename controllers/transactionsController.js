@@ -21,7 +21,8 @@ transactions.get("/:idx", (req, res) => {
     console.log(transactionsArray[idx]);
     res.json(transactionsArray[idx]);
   } else {
-    res.redirect("/*");
+    console.log("uh oh")
+    // res.redirect("/*");
   }
 });
 
