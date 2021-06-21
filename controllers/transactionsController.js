@@ -1,7 +1,7 @@
 const transactions = require("express").Router();
 const transactionsArray = require("../models/transactions");
 
-// index - list all transactions
+// list all transactions
 transactions.get("/", (req, res) => {
   res.json(transactionsArray);
 });
@@ -21,8 +21,7 @@ transactions.get("/:idx", (req, res) => {
     console.log(transactionsArray[idx]);
     res.json(transactionsArray[idx]);
   } else {
-    console.log("uh oh")
-    // res.redirect("/*");
+    res.redirect("/*");
   }
 });
 
@@ -39,7 +38,7 @@ transactions.put("/:idx", (req, res) => {
   }
 });
 
-// destroy a single transaction
+// delete a single transaction
 transactions.delete("/:idx", (req, res) => {
   const { idx } = req.params;
   const deletedTransactions = transactionsArray.splice(idx, 1);
