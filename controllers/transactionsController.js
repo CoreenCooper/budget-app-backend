@@ -21,7 +21,8 @@ transactions.get("/:index", (req, res) => {
   if (transactionsArray[index]) {
     res.json(transactionsArray[index]);
   } else {
-    res.redirect("/*");
+    console.log("pudding")
+    // res.redirect("/*");
   }
 });
 
