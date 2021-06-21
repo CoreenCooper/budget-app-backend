@@ -18,7 +18,7 @@ transactions.post("/", (req, res) => {
 transactions.get("/:index", (req, res) => {
   const { index } = req.params;
   console.log(index);
-  if (transactionsArray[index]) {
+  if (!transactionsArray[index]) {
     res.json(transactionsArray[index]);
   } else {
     console.log("pudding")
