@@ -6,7 +6,7 @@ transactions.get("/", (req, res) => {
   res.json(transactionsArray);
 });
 
-// create and display a single transaction
+// create a single transaction
 transactions.post("/", (req, res) => {
   const { body } = req;
   transactionsArray.push(body);
@@ -39,10 +39,7 @@ transactions.put("/:idx", (req, res) => {
   }
 });
 
-// should there be sometype of validation
-// if the user enters an idx that is not available?
-
-// delete a single transaction
+// destroy a single transaction
 transactions.delete("/:idx", (req, res) => {
   const { idx } = req.params;
   const deletedTransactions = transactionsArray.splice(idx, 1);
