@@ -34,7 +34,7 @@ transactions.put("/:idx", (req, res) => {
     res.json(transactionsArray[idx]);
     console.log(body);
   } else {
-    res.direct("/*");
+    res.redirect("/*");
   }
 });
 
